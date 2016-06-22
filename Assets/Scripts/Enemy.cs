@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour {
 			yield break;
 		}
 
+
 		while (true) {
 			//子要素をすべて取得する
 			for (int i = 0; i < transform.childCount; i++) {
