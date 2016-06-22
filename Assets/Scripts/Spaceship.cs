@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
-//Rigidbody2Dコンポーネントを必須にする
-[RequireComponent(typeof(Rigidbody2D))]
+//Rigidbody2DコンポーネントとAnimaterコンポーネントを必須にする
+[RequireComponent(typeof(Rigidbody2D),typeof(Animator))]
 
 public class Spaceship : MonoBehaviour {
 	//移動スピード
@@ -14,6 +14,15 @@ public class Spaceship : MonoBehaviour {
 	public bool canShot;
 	//爆発のPrefab
 	public GameObject explosion;
+	//アニメーターコンポーネント
+	private Animator animator;
+
+	void Start(){
+		//アニメータコンポーネントを取得
+		animator = GetComponent<Animator>();
+	}
+
+
 	//弾の爆発の作成
 	public void Explosion(){
 		Instantiate (explosion, transform.position, transform.rotation);
@@ -22,4 +31,10 @@ public class Spaceship : MonoBehaviour {
 	public void Shot(Transform origin){
 		Instantiate (bullet, origin.position, origin.rotation);
 	}
+	//アニメータコンポーネントを取得
+	public Animator GetAnimator(){
+		return animator;
+	}
+
 }
+

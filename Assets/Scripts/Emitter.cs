@@ -27,18 +27,18 @@ public class Emitter : MonoBehaviour {
 			}
 
 			//Waveを作成する
-			GameObject wave = (GameObject)Instantiate(waves[currentWave], transform.position, Quaternion.identity);
+			GameObject g = (GameObject)Instantiate(waves[currentWave], transform.position, Quaternion.identity);
 
 			//WaveをEmitterの子要素にする
-			wave.transform.parent = transform;
+			g.transform.parent = transform;
 
 			//Waveの子要素のEnemyがすべて削除されるまで待機する
-			while (wave.transform.childCount != 0) {
+			while (g.transform.childCount != 0) {
 				yield return new WaitForEndOfFrame ();
 			}
 
 			//Waveの削除
-			Destroy(wave);
+			Destroy(g);
 
 			//格納されているWaveをすべて実行したらcurrentwaveを０にする（最初から→ループ）
 			if (waves.Length <= ++currentWave) {
