@@ -23,31 +23,36 @@ public class Player : MonoBehaviour {
 		Vector2 pos = Vector2.zero;
 
 		#if UNITY_EDITOR
-	
-			Vector3 vec = Input.mousePosition;
-			vec.y += 30;
-			pos = Camera.main.ScreenToWorldPoint(vec);
-		#else 
-			pos = transform.ImagePosition;
-			foreach(Touch Touch int Input.touches){
-				Vector3 Vector2 = Touch.ImagePosition;
-				Vector2.yield return += 30;
-				pos = Camera.main.ScreenToWorldPoint(Vector2);
+
+		Vector3 vec = Input.mousePosition;
+		vec.y += 30;
+		pos = Camera.main.ScreenToWorldPoint(vec);
+
+		#else
+		pos = transform.position;
+		foreach (Touch touch in Input.touches) {
+		Vector3 vec = touch.position;
+		vec.y += 30;
+		pos = Camera.main.ScreenToWorldPoint(vec);
 		}
 		#endif
-		//画面左下のワールド座標をビューポートから取得
-		Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0,0));
-		//画面右上のワールド座標をビューポートから取得
-		Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1,1));
-	
-		//プレイヤーの位置が画面内に収まるように制限をかける
-		pos.x = Mathf.Clamp (pos.x,min.x,max.x);
-		pos.y = Mathf.Clamp (pos.y,min.y,max.y);
 
-		//制限をかけた値をプレイヤーの位置とする
+		// 画面左下のワールド座標をビューポートから取得
+		Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
+
+		// 画面右上のワールド座標をビューポートから取得
+		Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
+
+		// プレイヤーの位置が画面内に収まるように制限をかける
+		pos.x = Mathf.Clamp (pos.x, min.x, max.x);
+		pos.y = Mathf.Clamp (pos.y, min.y, max.y);
+
+		// 制限をかけた値をプレイヤーの位置とする
 		transform.position = pos;
+
 	}
 
+	//機体の移動
 	void Move(Vector2 direction){
 		//画面左下のワールド座標をビューポートから取得
 		Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0,0));
