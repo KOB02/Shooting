@@ -156,6 +156,8 @@ MonoBehaviour:
   waves:
   - {fileID: 164042, guid: 08ce3a370367c49d4b4cb663278ad516, type: 2}
   - {fileID: 156720, guid: 1bd4cc9c21677470db2714b9b590dd70, type: 2}
+  - {fileID: 100016, guid: 97a2ac8bc9ff84a7a97e3b24eaf5b048, type: 2}
+  - {fileID: 100016, guid: e5f09567eb32c4d8e958d308b2908547, type: 2}
   - {fileID: 151558, guid: 8014a3673347d4a3eb3991a0b362ea64, type: 2}
   - {fileID: 128832, guid: 812bfde26c40146a592a917f2b1313ca, type: 2}
 --- !u!4 &158407498
