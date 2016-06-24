@@ -14,11 +14,11 @@ public class Manager : MonoBehaviour {
 		title = GameObject.Find("Title");
 	}
 
-	void Update(){
-		//ゲーム中ではなく、xキーが押されたらtrueを返す
-		if (IsPlaying () == false && Input.GetKeyDown (KeyCode.X)){
-			GameStart ();
-		}
+	void OnGUI(){
+			//ゲーム中ではなく、タッチまたはマウスをクリック直後であればtrueを返す。
+		if (IsPlaying () == false && Event.current.type == EventType.MouseDown) {
+				GameStart ();
+			}
 	}
 
 	void GameStart(){
